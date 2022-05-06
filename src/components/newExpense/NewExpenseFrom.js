@@ -1,11 +1,16 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
 const NewExpenseForm = () => {
-  const [userInput, setUserInput] = useState({
-    titleInput: "",
-    amoundInput: "",
-    dateInput: "",
-  });
+  // const [userInput, setUserInput] = useState({
+  //   titleInput: "",
+  //   amoundInput: "",
+  //   dateInput: "",
+  // });
+
+  //Opcion 3: individual statates.
+  const [titleInput, setTitleInput] = useState("");
+  const [amoundInput, setAmoundInput] = useState("");
+  const [DateInput, setDateInput] = useState("");
 
   const titleChangeHandler = (event) => {
     // Keep in mind this approach is no recomended, it will work most of the cases though.
@@ -14,18 +19,21 @@ const NewExpenseForm = () => {
     // -> setUserInput({ ...userInput, titleInput: event.target.value });
     // Option 2: recomended
     // React will garante you will get latest snapshot of the state.
-    setUserInput((prevState) => {
-      return { ...prevState, titleInput: event.target.value };
-    });
+    //  -> setUserInput((prevState) => {
+    // ->   return { ...prevState, titleInput: event.target.value };
+    //  -> });
     //Option 3: is handle individual state for each input declarin separatly.
+    setTitleInput(event.target.value);
   };
 
-  const amaountChangeHandler = (event) => {
-    setUserInput({ ...userInput, amoundInput: event.target.value });
+  const amountChangeHandler = (event) => {
+    // setUserInput({ ...userInput, amoundInput: event.target.value });
+    setAmoundInput(event.target.value);
   };
 
   const dateChangeHandler = (event) => {
-    setUserInput({ ...userInput, dateInput: event.target.value });
+    // setUserInput({ ...userInput, dateInput: event.target.value });
+    setDateInput(event.target.value);
   };
 
   return (
