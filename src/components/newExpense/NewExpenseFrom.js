@@ -9,8 +9,8 @@ const NewExpenseForm = () => {
 
   //Opcion 3: individual statates.
   const [titleInput, setTitleInput] = useState("");
-  const [amoundInput, setAmoundInput] = useState("");
-  const [DateInput, setDateInput] = useState("");
+  const [amountInput, setAmountInput] = useState("");
+  const [dateInput, setDateInput] = useState("");
 
   const titleChangeHandler = (event) => {
     // Keep in mind this approach is no recomended, it will work most of the cases though.
@@ -28,7 +28,7 @@ const NewExpenseForm = () => {
 
   const amountChangeHandler = (event) => {
     // setUserInput({ ...userInput, amoundInput: event.target.value });
-    setAmoundInput(event.target.value);
+    setAmountInput(event.target.value);
   };
 
   const dateChangeHandler = (event) => {
@@ -36,20 +36,44 @@ const NewExpenseForm = () => {
     setDateInput(event.target.value);
   };
 
+  const submitHandler = (event) => {
+    //Prevent from JavaScript default to reload the form.
+    event.preventDefault();
+    const submitData = {
+      title: titleInput,
+      amount: amountInput,
+      date: new Date(dateInput),
+    };
+
+    console.log(submitData);
+
+    //Cleaning the form from reac. two-binding method.
+    setTitleInput("");
+    setAmountInput("");
+    setDateInput("");
+    //set this value as default in the form.
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title: </label>
-          <input type="text" />
+          <input type="text" value={titleInput} onChange={titleChangeHandler} />
         </div>
         <div className="new-expense__control">
           <label>Amount: </label>
-          <input type="number" min="0.0" step="1" />
+          <input
+            type="number"
+            min="0.0"
+            step="1"
+            value={amountInput}
+            onChange={amountChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Date: </label>
-          <input type="date" />
+          <input type="date" value={dateInput} onChange={dateChangeHandler} />
         </div>
         <div className="new-expense__actions">
           <button type="submit"> Add Expense</button>
