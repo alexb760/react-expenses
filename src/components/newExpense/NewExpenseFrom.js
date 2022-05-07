@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
-const NewExpenseForm = () => {
+
+const NewExpenseForm = (props) => {
   // const [userInput, setUserInput] = useState({
   //   titleInput: "",
   //   amoundInput: "",
@@ -45,7 +46,7 @@ const NewExpenseForm = () => {
       date: new Date(dateInput),
     };
 
-    console.log(submitData);
+    props.onSaveExpenseData(submitData);
 
     //Cleaning the form from reac. two-binding method.
     setTitleInput("");

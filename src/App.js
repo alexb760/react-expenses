@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   //Passing data througth props.
-  const expensesItems = [
+  let expensesItems = [
     {
       id: "e1",
       title: "Toilet Paper",
@@ -25,9 +25,13 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const saveNewExpenseData = (dataInput) => {
+    console.log(expensesItems);
+  };
   return (
     <div>
-      <NewExpenses />
+      <NewExpenses onSaveExpenseItem={saveNewExpenseData} />
       <Expenses expenses={expensesItems} />
     </div>
   );
