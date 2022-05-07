@@ -1,3 +1,7 @@
+# sections
+
+4. [sections/sections4.md] Lifting up states
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
