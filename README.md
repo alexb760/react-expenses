@@ -1,6 +1,6 @@
 # sections
 
-4. [sections/sections4.md] Lifting up states
+4. [Lifting up states](sections/sections4.md)
 
 # Getting Started with Create React App
 
