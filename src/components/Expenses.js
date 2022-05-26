@@ -11,10 +11,12 @@ function Expenses(props) {
     setFilteredYear(selectedYear);
   };
 
-  const filterItems = props.expenses.filter(
+  const filterdItems = props.expenses.filter(
     (item) => item.date.getFullYear() === parseInt(filteredYear, 0)
   );
 
+  const hasItem = filterdItems.length === 0;
+  console.log(hasItem);
   return (
     <div>
       <div className="expenses">
@@ -22,11 +24,9 @@ function Expenses(props) {
           selectedDefaultYear={filteredYear}
           onChangFilterYear={filterChangeHandler}
         />
-        {props.expenses
-          .filter(
-            (item) => item.date.getFullYear() === parseInt(filteredYear, 0)
-          )
-          .map((item) => (
+        {hasItem && <p>Not expenses found.</p>}
+        {!hasItem &&
+          filterdItems.map((item) => (
             <ExpenseItem
               key={item.id}
               title={item.title}
