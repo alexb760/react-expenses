@@ -8,21 +8,20 @@ function ExpenseItem(props) {
   //lerning about useState Hook.
   // 1. We define our statae passing the property we want to handle.
   // this can be an object too.
-  const [title, setTitle] = useState(props.title);
+  //const [title, setTitle] = useState(props.title);
   //2. Creates a handler functions,
   // this function can not be aoutside the react component
-  const titleHandler = () => {
-    setTitle("Update!");
-    console.log(title);
-  };
+  //const titleHandler = () => {
+  //setTitle("Update!");
+  //console.log(title);
+  //};
 
   return (
     <div className="expense-item">
       <ExpenseDate date={props.date} />
       <div className="expense-item__description">
-        <h1>{title}</h1>
+        <h2>{props.title}</h2>
         <div className="expense-item__price">{props.amount}</div>
-        <button onClick={titleHandler}>Update</button>
       </div>
     </div>
   );
