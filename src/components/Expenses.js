@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilters/ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 
 import "./Expenses.css";
 
@@ -15,8 +15,6 @@ function Expenses(props) {
     (item) => item.date.getFullYear() === parseInt(filteredYear, 0)
   );
 
-  const hasItem = filterdItems.length === 0;
-  console.log(hasItem);
   return (
     <div>
       <div className="expenses">
@@ -24,16 +22,7 @@ function Expenses(props) {
           selectedDefaultYear={filteredYear}
           onChangFilterYear={filterChangeHandler}
         />
-        {hasItem && <p>Not expenses found.</p>}
-        {!hasItem &&
-          filterdItems.map((item) => (
-            <ExpenseItem
-              key={item.id}
-              title={item.title}
-              amount={item.amount}
-              date={item.date}
-            />
-          ))}
+        <ExpensesList items={filterdItems} />
       </div>
     </div>
   );
