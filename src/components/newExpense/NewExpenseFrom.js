@@ -78,6 +78,9 @@ const NewExpenseForm = (props) => {
         </div>
         <div className="new-expense__actions">
           <button type="submit"> Add Expense</button>
+          <button type="button" onClick={props.onCancel}>
+            cancel
+          </button>
         </div>
       </div>
     </form>
